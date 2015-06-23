@@ -56,6 +56,12 @@ public class StoryDao {
 			s.setExamplesTable(rt);
 			s.setStory(st);
 			
+			List<String> steps = new ArrayList<String>();
+			steps.add("Step 1 - This is the first step - " + i);
+			steps.add("Step 2 - This is the second step - " + i);
+			steps.add("Step 3 - This is the third step - " + i);
+			
+			s.setSteps(steps);
 			scenarios.add(s);
 //			sesstion.save(s);
 		}
@@ -65,6 +71,12 @@ public class StoryDao {
 		sesstion.save(st);
 		
 		sesstion.getTransaction().commit();
+		
+		if(sesstion !=null) {
+			sesstion.close();
+		}
+		
+		sf.close();
 	}
 
 }
